@@ -1,0 +1,41 @@
+name: Build bilt
+on: ['push']
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Re-attach HEAD
+        run: |
+          git checkout "${GITHUB_REF:11}"
+          git config --global user.email "sample-bilt-monorepo@example.com"
+          git config --global user.name "Sample Bilt Monorepo CI"
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14
+          registry-url: 'https://registry.npmjs.org'
+      - name: Install Bilt
+        run: |
+          npm install -g npm@latest
+          npm install -g @bilt/cli
+      - name: Run Verdaccio (relevant only for branch builds)
+        if: github.ref != 'refs/heads/main'
+        run: |
+          cd dev
+          npm install
+          npm run develop-in-branch
+      - name: Bilt
+        run: |
+          if [ "${GITHUB_REF}" != "refs/heads/main" ]; then
+            export MORE_BILT_OPTIONS=--no-after
+          fi
+          bilt -m "build from CI" --no-before ${MORE_BILT_OPTIONS}
+        env:
+          # This is necessary in order to push a commit to the repo
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
