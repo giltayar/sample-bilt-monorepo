@@ -1,0 +1,23 @@
+{
+	"folders": [
+		{
+			"name": "dev",
+			"path": "../../../dev"
+		},
+		{
+			"name": "math-utils",
+			"path": "../../math-utils"
+		},
+		{
+			"name": "snake",
+			"path": ".."
+		},
+		{
+			"path": "../../../.bilt"
+		},
+		{
+			"path": "../../../.github"
+		}
+	],
+	"settings": {}
+}
