@@ -10,7 +10,7 @@
     "start-verdaccio": "node -e \"require('child_process').spawn('verdaccio', ['--config=verdaccio.config.yaml'], {stdio: 'inherit'}).unref()\"",
     "set-scoped-to-verdaccio": "npm config set '//localhost:4873/:_authToken' anon-token && npm config set '@sample-bilt-monorepo:registry' 'http://localhost:4873'",
     "unset-scoped-registry": "npm config delete @sample-bilt-monorepo:registry",
-    "kill-verdaccio": "kill-port 4873 && rimraf verdaccio.log verdaccio-storage"
+    "kill-verdaccio": "kill-port 4873"
   },
   "keywords": [],
   "author": "",
