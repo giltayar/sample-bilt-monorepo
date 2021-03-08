@@ -1,4 +1,4 @@
-name: Build bilt
+name: Build sample-bilt-repo
 on: ['push']
 jobs:
   build:
