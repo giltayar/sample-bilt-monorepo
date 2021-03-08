@@ -13,10 +13,6 @@
     "src",
     "types"
   ],
-  "publishConfig": {
-    "access": "restricted",
-    "registry": "https://npm.pkg.github.com"
-  },
   "scripts": {
     "build": "concurrently -r 'npm:build:*'",
     "build:typescript": "rm -rf types && tsc && cp src/*.d.ts types/src",
