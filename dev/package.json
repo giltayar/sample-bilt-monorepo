@@ -1,15 +1,15 @@
 {
-  "name": "package-to-help-working-with-bilt",
+  "name": "package-to-help-working-with-scoped",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "private": "true",
   "scripts": {
-    "develop-in-main": "npm run kill-verdaccio &&  npm run unset-bilt-registry && (pkill verdaccio || true)",
-    "develop-in-branch": "npm run kill-verdaccio && npm run start-verdaccio && wait-on http://localhost:4873 && npm run set-bilt-to-verdaccio",
+    "develop-globally": "npm run kill-verdaccio &&  npm run unset-scoped-registry && (pkill verdaccio || true)",
+    "develop-locally": "npm run kill-verdaccio && npm run start-verdaccio && wait-on http://localhost:4873 && npm run set-scoped-to-verdaccio",
     "start-verdaccio": "node -e \"require('child_process').spawn('verdaccio', ['--config=verdaccio.config.yaml'], {stdio: 'inherit'}).unref()\"",
-    "set-bilt-to-verdaccio": "npm config set '//localhost:4873/:_authToken' anon-token && npm config set '@bilt:registry' 'http://localhost:4873'",
-    "unset-bilt-registry": "npm config delete @bilt:registry",
+    "set-scoped-to-verdaccio": "npm config set '//localhost:4873/:_authToken' anon-token && npm config set '@sample-bilt-repo:registry' 'http://localhost:4873'",
+    "unset-scoped-registry": "npm config delete @sample-bilt-repo:registry",
     "kill-verdaccio": "kill-port 4873 && rimraf verdaccio.log verdaccio-storage"
   },
   "keywords": [],
