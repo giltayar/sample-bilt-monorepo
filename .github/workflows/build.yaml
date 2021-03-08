@@ -24,17 +24,13 @@ jobs:
           npm install -g npm@latest
           npm install -g @bilt/cli
       - name: Run Verdaccio (relevant only for branch builds)
-        if: github.ref != 'refs/heads/main'
         run: |
           cd dev
           npm install
           npm run develop-in-branch
       - name: Bilt
         run: |
-          if [ "${GITHUB_REF}" != "refs/heads/main" ]; then
-            export MORE_BILT_OPTIONS=--no-after
-          fi
-          bilt -m "build from CI" --no-before ${MORE_BILT_OPTIONS}
+          bilt -m "build from CI" --no-before
         env:
           # This is necessary in order to push a commit to the repo
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
