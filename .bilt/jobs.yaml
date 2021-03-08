@@ -8,7 +8,7 @@ jobs:
 
       after:
         - name: 'add verdaccio db'
-          enableOption: ['commit', 'git', 'publish']
+          enableOption: ['commit', 'git']
           run: 'git add dev'
         - name: 'git commit'
           enableOption: ['commit', 'git']
