@@ -36,14 +36,7 @@ jobs:
             NEXT_VERSION:
               function: |
                 async ({directory, biltin}) => {
-                  try {
-                  const x = await biltin.npm.nextVersion(directory)
-                  console.log('******* x', x)
-                  return x
-                  } catch (error) {
-                    console.error('*******************', error)
-                    throw error
-                  }
+                  return await biltin.npm.nextVersion(directory)
                 }
         - name: 'npm run build'
           enableOption: 'build'
