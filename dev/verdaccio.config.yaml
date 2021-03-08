@@ -9,7 +9,7 @@ logs:
   - {type: file, path: 'verdaccio.log', format: pretty, level: http}
   - {type: stdout, format: pretty, level: error}
 packages:
-  '@sample-bit-monorepo/*':
+  '@sample-bilt-monorepo/*':
     access: $all
     publish: $all
     proxy: npmjs
