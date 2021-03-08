@@ -7,7 +7,7 @@
   "main": "./src/snake.js",
   "types": "./types/src/snake.d.ts",
   "engines": {
-    "node": ">=15.0.0"
+    "node": ">=14.0.0"
   },
   "files": [
     "src",
