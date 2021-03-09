@@ -1,6 +1,6 @@
 {
   "name": "@sample-bilt-monorepo/snake",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "",
   "type": "module",
   "exports": "./src/snake.js",
@@ -53,6 +53,7 @@
     "typescript": "^4.2.3"
   },
   "dependencies": {
-    "@sample-bilt-monorepo/math-utils": "^1.0.0"
+    "@sample-bilt-monorepo/math-utils": "^1.0.0",
+    "immer": "^8.0.1"
   }
 }

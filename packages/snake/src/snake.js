@@ -1,14 +1,17 @@
 import {randomBetween, range} from '@sample-bilt-monorepo/math-utils'
+import produce from 'immer'
 
 /**
  * @typedef {'north' | 'south' | 'east' | 'west'} Direction
- * @typedef {{x: number, y: number, char: string}} BoardItem
+ * @typedef {'turn-to-north' | 'turn-to-south' | 'turn-to-east' | 'turn-to-west'} Command
+ * @typedef {{x: number, y: number}} BoardItem
  * @typedef {{
  *  width: number
  *  height: number
  *  snake: BoardItem[]
  *  snakeDirection: Direction
  *  apples: BoardItem[]
+ *  commands: Command[]
  * }} Board
  */
 
@@ -29,11 +32,10 @@ export function makeBoard(height, width) {
 /**
  * @param {number} x
  * @param {number} y
- * @param {string} char
  * @returns {BoardItem}
  */
-export function makeBoardItem(x, y, char) {
-  return {x, y, char}
+export function makeBoardItem(x, y) {
+  return {x, y}
 }
 
 /**
@@ -44,7 +46,7 @@ export function makeBoardItem(x, y, char) {
 export function addInitialSnake(board, direction) {
   return {
     ...board,
-    snake: [makeBoardItem((board.width / 2) | 0, (board.height / 2) | 0, headChar(direction))],
+    snake: [makeBoardItem((board.width / 2) | 0, (board.height / 2) | 0)],
     snakeDirection: direction,
   }
 }
@@ -64,7 +66,7 @@ export function addApple(board) {
 
     return {
       ...board,
-      apples: [...(board?.apples ?? []), makeBoardItem(x, y, 'O')],
+      apples: [...(board?.apples ?? []), makeBoardItem(x, y)],
     }
   }
 
@@ -72,19 +74,41 @@ export function addApple(board) {
 }
 
 /**
- * @param {Direction} direction
+ * @param {Board} board
+ * @param {Command} command
+ * @returns {Board}
  */
-function headChar(direction) {
-  switch (direction) {
-    case 'north':
-      return '^'
-    case 'south':
-      return 'v'
-    case 'east':
-      return '>'
-    case 'west':
-      return '<'
-  }
+export function enqueueCommand(board, command) {
+  return {...board, commands: [...board.commands, command]}
+}
+
+/**
+ * @param {Board} board
+ * @param {boolean} isSnakeLengtheningTick
+ * @returns {{board: Board, hasCollided: boolean}}
+ */
+export function executeTick(board, isSnakeLengtheningTick) {
+  let hasCollided = false
+  const boardAfterTick = produce(board, (board) => {
+    const snake = board.snake
+    const tailOfSnake = snake[snake.length - 1]
+
+    if (board.commands.length > 0) {
+      board.snakeDirection = determineSnakeDirection(/**@type {Command}*/ (board.commands.shift()))
+    }
+    const collided = moveSnake(board.snake, board.snakeDirection, board.apples)
+
+    if (collided) {
+      hasCollided = true
+      return
+    }
+
+    if (isSnakeLengtheningTick) {
+      snake.push(tailOfSnake)
+    }
+  })
+
+  return {board: boardAfterTick, hasCollided}
 }
 
 /**
@@ -94,4 +118,58 @@ function headChar(direction) {
  */
 function conflictsWith(x, y, items) {
   return !!items.find((item) => item.x === x && item.y === y)
+}
+
+/**
+ * @param {Command} command
+ * @returns {Direction}
+ */
+function determineSnakeDirection(command) {
+  switch (command) {
+    case 'turn-to-north':
+      return 'north'
+    case 'turn-to-south':
+      return 'south'
+    case 'turn-to-east':
+      return 'east'
+    case 'turn-to-west':
+      return 'west'
+  }
+}
+
+/**
+ * @param {import("immer/dist/internal").WritableDraft<BoardItem>[]} snake
+ * @param {Direction} snakeDirection
+ * @param {import("immer/dist/internal").WritableDraft<BoardItem>[]} apples
+ * @returns {boolean}
+ */
+function moveSnake(snake, snakeDirection, apples) {
+  const newSnakeHead = moveHead(snake[0], snakeDirection)
+  if (apples.find((apple) => apple.x === newSnakeHead.x && apple.y === newSnakeHead.y)) {
+    return true
+  }
+  for (let i = snake.length - 1; i > 1; i--) {
+    snake[i - 1] = snake[i]
+  }
+
+  snake[0] = newSnakeHead
+
+  return false
+}
+
+/**
+ * @param {import("immer/dist/internal").WritableDraft<BoardItem>} snakeHead
+ * @param {Direction} snakeDirection
+ */
+function moveHead(snakeHead, snakeDirection) {
+  switch (snakeDirection) {
+    case 'north':
+      return {...snakeHead, y: snakeHead.y - 1}
+    case 'south':
+      return {...snakeHead, y: snakeHead.y + 1}
+    case 'west':
+      return {...snakeHead, x: snakeHead.x - 1}
+    case 'east':
+      return {...snakeHead, x: snakeHead.x + 1}
+  }
 }
