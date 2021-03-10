@@ -5,7 +5,12 @@ import {expect} from 'chai'
 import * as m from '../../src/snake.js'
 
 describe('snake (unit)', function () {
-  it('should be able to load (you can delete this test once you have others)', async () => {
-    expect(m).to.not.be.undefined
+  describe('executeTick', () => {
+    const initialBoard = m.makeBoard(30, 30)
+
+    it('should locate snake in proper position', async () => {
+      expect(m.addInitialSnake(initialBoard, 'east').snake).to.eql([{}])
+    })
+
   })
 })

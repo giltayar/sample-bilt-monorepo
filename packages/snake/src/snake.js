@@ -4,7 +4,7 @@ import produce from 'immer'
 /**
  * @typedef {'north' | 'south' | 'east' | 'west'} Direction
  * @typedef {'turn-to-north' | 'turn-to-south' | 'turn-to-east' | 'turn-to-west'} Command
- * @typedef {{x: number, y: number}} BoardItem
+ * @typedef {{x: number, y: number}}  BoardItem
  * @typedef {{
  *  width: number
  *  height: number
@@ -18,6 +18,7 @@ import produce from 'immer'
 /**
  * @param {number} height
  * @param {number} width
+ * @returns {Board}
  */
 export function makeBoard(height, width) {
   return {
@@ -26,16 +27,8 @@ export function makeBoard(height, width) {
     snake: [],
     snakeDirection: 'east',
     apples: [],
+    commands: [],
   }
-}
-
-/**
- * @param {number} x
- * @param {number} y
- * @returns {BoardItem}
- */
-export function makeBoardItem(x, y) {
-  return {x, y}
 }
 
 /**
@@ -109,6 +102,15 @@ export function executeTick(board, isSnakeLengtheningTick) {
   })
 
   return {board: boardAfterTick, hasCollided}
+}
+
+/**
+ * @param {number} x
+ * @param {number} y
+ * @returns {BoardItem}
+ */
+function makeBoardItem(x, y) {
+  return {x, y}
 }
 
 /**
