@@ -5,8 +5,16 @@
 			"path": "dev"
 		},
 		{
+			"name": "console-snake",
+			"path": "packages/console-snake"
+		},
+		{
 			"name": "math-utils",
 			"path": "packages/math-utils"
+		},
+		{
+			"name": "promise-utils",
+			"path": "packages/promise-utils"
 		},
 		{
 			"name": "snake",
