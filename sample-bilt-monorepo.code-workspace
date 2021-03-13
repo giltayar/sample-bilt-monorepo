@@ -5,6 +5,10 @@
 			"path": "dev"
 		},
 		{
+			"name": "docs",
+			"path": "docs"
+		},
+		{
 			"name": "console-snake",
 			"path": "packages/console-snake"
 		},
