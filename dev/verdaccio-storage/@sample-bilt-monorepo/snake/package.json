@@ -519,10 +519,86 @@
 				"tarball": "http://localhost:4873/@sample-bilt-monorepo/snake/-/@sample-bilt-monorepo/snake-1.0.6.tgz"
 			},
 			"contributors": []
+		},
+		"1.0.7": {
+			"name": "@sample-bilt-monorepo/snake",
+			"version": "1.0.7",
+			"description": "A library that ???.",
+			"type": "module",
+			"exports": "./src/snake.js",
+			"main": "./src/snake.js",
+			"types": "./types/src/snake.d.ts",
+			"engines": {
+				"node": ">=14.0.0"
+			},
+			"files": [
+				"src",
+				"types"
+			],
+			"scripts": {
+				"build": "concurrently -r 'npm:build:*'",
+				"build:typescript": "rm -rf types && tsc && cp src/*.d.ts types/src",
+				"test": "concurrently -r 'npm:test:*'",
+				"test:mocha-parallel": "npm run mocha -- --parallel",
+				"test:eslint": "eslint --color --max-warnings=0 '**/*.js'",
+				"test:typescript": "tsc --noEmit --emitDeclarationOnly false --pretty",
+				"mocha": "mocha --no-timeouts --exit --color 'test/unit/*.test.js' 'test/integ/*.test.js'"
+			},
+			"keywords": [
+				"javascript",
+				"nodejs"
+			],
+			"author": {
+				"name": "Gil Tayar",
+				"email": "gil@tayar.org"
+			},
+			"license": "MIT",
+			"repository": {
+				"url": "git+https://github.com/giltayar/sample-bilt-monorepo.git",
+				"directory": "packages/snake",
+				"type": "git"
+			},
+			"devDependencies": {
+				"@babel/core": "^7.13.8",
+				"@babel/eslint-parser": "^7.13.8",
+				"@babel/plugin-syntax-top-level-await": "^7.12.13",
+				"@types/chai": "^4.2.15",
+				"@types/chai-subset": "^1.3.3",
+				"@types/mocha": "^8.2.1",
+				"@types/node": "^14.14.32",
+				"chai": "^4.3.3",
+				"chai-subset": "^1.6.0",
+				"concurrently": "^6.0.0",
+				"eslint": "^7.21.0",
+				"eslint-plugin-mocha-no-only": "^1.1.1",
+				"eslint-plugin-node": "^11.1.0",
+				"eslint-plugin-prettier": "^3.3.1",
+				"mocha": "^8.3.1",
+				"prettier": "^2.2.1",
+				"typescript": "^4.2.3"
+			},
+			"dependencies": {
+				"@sample-bilt-monorepo/math-utils": "^1.0.0",
+				"immer": "^8.0.1"
+			},
+			"readmeFilename": "README.md",
+			"bugs": {
+				"url": "https://github.com/giltayar/sample-bilt-monorepo/issues"
+			},
+			"homepage": "https://github.com/giltayar/sample-bilt-monorepo#readme",
+			"_id": "@sample-bilt-monorepo/snake@1.0.7",
+			"_nodeVersion": "15.7.0",
+			"_npmVersion": "7.5.4",
+			"dist": {
+				"integrity": "sha512-q7RbWvQPqGaBD3ZpTowFu8TSRSlybmE/sl2p5HGdft2B0GJjhrWSvgHRPgs1rP0foh0wwhtyWlCOUq9+05KVHQ==",
+				"shasum": "118bc5f649653bae9982ea19ed02d4a78aac6939",
+				"tarball": "http://localhost:4873/@sample-bilt-monorepo/snake/-/@sample-bilt-monorepo/snake-1.0.7.tgz"
+			},
+			"contributors": []
 		}
 	},
 	"time": {
-		"modified": "2021-03-13T16:02:18.075Z",
+		"modified": "2021-03-13T16:14:39.017Z",
 		"created": "2021-03-08T19:34:43.177Z",
 		"1.0.0": "2021-03-08T19:34:43.177Z",
 		"1.0.1": "2021-03-08T20:27:31.606Z",
@@ -530,11 +606,12 @@
 		"1.0.3": "2021-03-08T21:43:18.577Z",
 		"1.0.4": "2021-03-09T19:06:58.737Z",
 		"1.0.5": "2021-03-13T13:10:46.374Z",
-		"1.0.6": "2021-03-13T16:02:18.075Z"
+		"1.0.6": "2021-03-13T16:02:18.075Z",
+		"1.0.7": "2021-03-13T16:14:39.017Z"
 	},
 	"users": {},
 	"dist-tags": {
-		"latest": "1.0.6"
+		"latest": "1.0.7"
 	},
 	"_uplinks": {},
 	"_distfiles": {},
@@ -566,9 +643,13 @@
 		"snake-1.0.6.tgz": {
 			"shasum": "7f33d8345e429a0af0b3ee516df79348b2a1101b",
 			"version": "1.0.6"
+		},
+		"snake-1.0.7.tgz": {
+			"shasum": "118bc5f649653bae9982ea19ed02d4a78aac6939",
+			"version": "1.0.7"
 		}
 	},
-	"_rev": "27-e2adc955bcdff434",
+	"_rev": "31-5d365138d1f0b6f6",
 	"_id": "@sample-bilt-monorepo/snake",
 	"readme": "# snake\n\nA library that ???.\n\nThis library is JSM-only (does not support `require`-ing it).\n\n## Installation\n\n```sh\nnpm install @sample-bilt-monorepo/snake\n```\n\n## Basic use\n\n???\n\nExample:\n\n```js\nimport {} from '@sample-bilt-monorepo/snake'\n???\n```\n\n## API\n\n### `???(???)`\n\n???\n\nExample:\n\n```js\nimport {} from '@sample-bilt-monorepo/snake'\n???\n```\n\n## Contributing\n\nSee the documentation on contributing code to packages in this monorepo\n[here](../../CONTRIBUTING.md).\n\n### License\n\nMIT\n"
 }

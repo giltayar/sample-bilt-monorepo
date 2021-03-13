@@ -148,8 +148,11 @@ function determineSnakeDirection(command) {
  */
 function moveSnake(snake, snakeDirection, apples) {
   const newSnakeHead = moveHead(snake[0], snakeDirection)
-  if (apples.find((apple) => apple.x === newSnakeHead.x && apple.y === newSnakeHead.y)) {
-    return true
+  const collidedWithAppleIndex = apples.findIndex(
+    (apple) => apple.x === newSnakeHead.x && apple.y === newSnakeHead.y,
+  )
+  if (collidedWithAppleIndex !== -1) {
+    apples.splice(collidedWithAppleIndex, 1)
   }
   for (let i = snake.length - 1; i > 0; i--) {
     snake[i] = snake[i - 1]
@@ -157,7 +160,7 @@ function moveSnake(snake, snakeDirection, apples) {
 
   snake[0] = newSnakeHead
 
-  return false
+  return collidedWithAppleIndex !== -1
 }
 
 /**
