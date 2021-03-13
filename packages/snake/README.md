@@ -7,7 +7,7 @@ This library is JSM-only (does not support `require`-ing it).
 ## Installation
 
 ```sh
-npm install @roundforest/snake
+npm install @sample-bilt-monorepo/snake
 ```
 
 ## Basic use
@@ -17,7 +17,7 @@ npm install @roundforest/snake
 Example:
 
 ```js
-import {} from '@roundforest/snake'
+import {} from '@sample-bilt-monorepo/snake'
 ???
 ```
 
@@ -30,7 +30,7 @@ import {} from '@roundforest/snake'
 Example:
 
 ```js
-import {} from '@roundforest/snake'
+import {} from '@sample-bilt-monorepo/snake'
 ???
 ```
 

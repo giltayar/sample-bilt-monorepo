@@ -16,6 +16,26 @@ describe('snake (unit)', function () {
       expect(m.addInitialSnake(m.makeBoard(31, 31), 'east').snake).to.eql([{x: 15, y: 15}])
     })
 
+    it('should add a random apple', () => {
+      const boardWithApple = m.addApple(initialBoard)
+
+      expect(boardWithApple.apples[0].x)
+        .to.be.gte(0)
+        .and.lt(boardWithApple.width)
+        .and.satisfy(isWhole)
+      expect(boardWithApple.apples[0].y)
+        .to.be.gte(0)
+        .and.lt(boardWithApple.height)
+        .and.satisfy(isWhole)
+
+      /**
+       * @param {number} number
+       */
+      function isWhole(number) {
+        return (number | 0) === number
+      }
+    })
+
     it('should add an apple that does not conflict with snake', () => {
       const boardWithSnake = m.addInitialSnake(initialBoard, 'east')
       for (const _ of range(0, 2000)) {
@@ -26,12 +46,12 @@ describe('snake (unit)', function () {
           .to.have.length(1)
           .and.to.satisfy(
             (/** @type {import('../../src/snake.js').BoardItem[]} */ apples) =>
-              apples[0].x != snake[0].x && apples[0].y != snake[0].y,
+              apples[0].x != snake[0].x || apples[0].y != snake[0].y,
           )
       }
     })
 
-    it('should enqueue one command or ore', () => {
+    it('should enqueue one command or more', () => {
       const newBoard = m.enqueueCommand(initialBoard, 'turn-to-east')
 
       expect(newBoard.commands).to.eql(['turn-to-east'])

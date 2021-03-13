@@ -51,8 +51,8 @@ export function addInitialSnake(board, direction) {
  */
 export function addApple(board, {TEST_BoardItem = undefined} = {}) {
   for (const _ of range(0, board.width * board.height)) {
-    const x = (TEST_BoardItem || {}).x || randomBetween(0, board.width)
-    const y = (TEST_BoardItem || {}).y || randomBetween(0, board.height)
+    const x = (TEST_BoardItem || {}).x || randomBetween(0, board.width) | 0
+    const y = (TEST_BoardItem || {}).y || randomBetween(0, board.height) | 0
 
     if (conflictsWith(x, y, board.apples) || conflictsWith(x, y, board.snake)) {
       continue
