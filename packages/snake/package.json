@@ -1,6 +1,6 @@
 {
   "name": "@sample-bilt-monorepo/snake",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "",
   "type": "module",
   "exports": "./src/snake.js",

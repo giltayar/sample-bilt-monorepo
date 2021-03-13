@@ -1,5 +1,5 @@
 import {randomBetween, range} from '@sample-bilt-monorepo/math-utils'
-import produce from 'immer'
+import {produce} from 'immer'
 
 /**
  * @typedef {'north' | 'south' | 'east' | 'west'} Direction
@@ -46,12 +46,13 @@ export function addInitialSnake(board, direction) {
 
 /**
  * @param {Board} board
+ * @param {{TEST_BoardItem?: BoardItem}} options
  * @returns {Board}
  */
-export function addApple(board) {
+export function addApple(board, {TEST_BoardItem = undefined} = {}) {
   for (const _ of range(0, board.width * board.height)) {
-    const x = randomBetween(0, board.width)
-    const y = randomBetween(0, board.height)
+    const x = (TEST_BoardItem || {}).x || randomBetween(0, board.width)
+    const y = (TEST_BoardItem || {}).y || randomBetween(0, board.height)
 
     if (conflictsWith(x, y, board.apples) || conflictsWith(x, y, board.snake)) {
       continue
@@ -150,8 +151,8 @@ function moveSnake(snake, snakeDirection, apples) {
   if (apples.find((apple) => apple.x === newSnakeHead.x && apple.y === newSnakeHead.y)) {
     return true
   }
-  for (let i = snake.length - 1; i > 1; i--) {
-    snake[i - 1] = snake[i]
+  for (let i = snake.length - 1; i > 0; i--) {
+    snake[i] = snake[i - 1]
   }
 
   snake[0] = newSnakeHead
