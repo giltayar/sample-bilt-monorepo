@@ -7,7 +7,7 @@ This library is JSM-only (does not support `require`-ing it).
 ## Installation
 
 ```sh
-npm install @roundforest/math-utils
+npm install @sample-bilt-monorepo/math-utils
 ```
 
 ## Basic use
@@ -17,7 +17,7 @@ npm install @roundforest/math-utils
 Example:
 
 ```js
-import {} from '@roundforest/math-utils'
+import {} from '@sample-bilt-monorepo/math-utils'
 ???
 ```
 
@@ -30,7 +30,7 @@ import {} from '@roundforest/math-utils'
 Example:
 
 ```js
-import {} from '@roundforest/math-utils'
+import {} from '@sample-bilt-monorepo/math-utils'
 ???
 ```
 
