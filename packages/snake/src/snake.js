@@ -146,6 +146,9 @@ function determineSnakeDirection(command) {
  * @param {import("immer/dist/internal").WritableDraft<BoardItem>[]} apples
  * @returns {boolean}
  */
+
+//
+
 function moveSnake(snake, snakeDirection, apples) {
   const newSnakeHead = moveHead(snake[0], snakeDirection)
   const collidedWithAppleIndex = apples.findIndex(
