@@ -1,6 +1,9 @@
 import readline from 'readline'
 import * as snake from '@sample-bilt-monorepo/snake'
 import {delay} from '@sample-bilt-monorepo/promise-utils'
+
+//
+
 /**
  *
  * @param {{width: number, height: number, tick: number, 'num-ticks-to-lengthen': number}} options
