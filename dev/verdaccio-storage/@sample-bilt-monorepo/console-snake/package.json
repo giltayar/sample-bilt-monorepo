@@ -272,7 +272,7 @@
 			"version": "1.0.2"
 		}
 	},
-	"_rev": "11-7f81b4958cd4664b",
+	"_rev": "12-028fdbbd6c8c5401",
 	"_id": "@sample-bilt-monorepo/console-snake",
-	"readme": "# create\n\nA CLI that ???\n\n## Installation\n\n```sh\nnpm install --global @sample-bilt-monorepo/templatemplate\n```\n\nThe above installs a command with the name `console-snake`.\n\n## Basic use\n\n???\n\n## CLI Parameters\n\n`console-snake ???`\n\n- `???`: ???\n\n## Contributing\n\nSee the documentation on contributing code to packages in this monorepo\n[here](../../CONTRIBUTING.md).\n\n### License\n\nMIT\n"
+	"readme": "# create\n\nA CLI that ???\n\n## Installation\n\n```sh\nnpm install --global @sample-bilt-monorepo/templatemplate\n```\n\nThe above installs a command with the name `console-snake`.\n\n## Basic use\n\n???\n\n## CLI Parameters\n\n`console-snake ???`\n\n- `???`: ???\n\n## Contributing\n\nSee the documentation on contributing code to packages in this monorepo\n[here](../../CONTRIBUTING.md).\n\n### License\n\nMIT"
 }
