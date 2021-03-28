@@ -25,14 +25,13 @@ export default async function main({
   readline.createInterface(process.stdin, process.stdout)
 
   for (let i = 1; ; ++i) {
-    const {board: newBoard, hasCollided, isAlive} = snake.executeTick(board, i % numTicksToLengthen === 0)
-    
-    if ( !isAlive) {
+    const isLengthen = i % numTicksToLengthen === 0
+    const {board: newBoard, hasCollided, isAlive} = snake.executeTick(board, isLengthen)
+    if (!isAlive) {
       console.clear()
-      console.log("God Bless The Snake Soul")
+      console.log('God Bless The Snake Soul')
       process.exit()
     }
-    
     board = hasCollided ? snake.addApple(newBoard) : newBoard
 
     showBoard(board)
