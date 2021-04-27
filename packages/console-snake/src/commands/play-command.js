@@ -30,7 +30,7 @@ export default async function main({
     if (!isAlive) {
       console.clear()
       console.log('God Bless The Snake Soul')
-      process.exit()
+      return
     }
     board = hasCollided ? snake.addApple(newBoard) : newBoard
 

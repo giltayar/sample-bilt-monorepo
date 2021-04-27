@@ -128,7 +128,7 @@ describe('snake (unit)', function () {
       expect(board.snake).to.eql([{x: 15, y: 17}])
     })
 
-    it('should switch twice if two  enqueud commands', () => {
+    it('should switch twice if two  enqueued commands', () => {
       const commandedBoard = m.enqueueCommand(
         m.enqueueCommand(initialBoard, 'turn-to-south'),
         'turn-to-west',
