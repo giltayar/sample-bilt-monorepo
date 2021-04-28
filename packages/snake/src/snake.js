@@ -53,8 +53,8 @@ export function addApple(board, {TEST_BoardItem = undefined} = {}) {
   for (const _ of range(0, board.width * board.height)) {
     const x = (TEST_BoardItem || {}).x || randomBetween(0, board.width) | 0
     const y = (TEST_BoardItem || {}).y || randomBetween(0, board.height) | 0
-    const newBoardItem = makeBoardItem(x,y)
-    if (conflictsWith(newBoardItem, board.apples) || conflictsWith( newBoardItem, board.snake)) {
+    const newBoardItem = makeBoardItem(x, y)
+    if (conflictsWith(newBoardItem, board.apples) || conflictsWith(newBoardItem, board.snake)) {
       continue
     }
 
@@ -132,7 +132,7 @@ function makeBoardItem(x, y) {
  * @param {BoardItem} newItem
  * @param {BoardItem[]} items
  */
-function conflictsWith( newItem, items) {
+function conflictsWith(newItem, items) {
   return !!items.find((item) => item.x === newItem.x && item.y === newItem.y)
 }
 
