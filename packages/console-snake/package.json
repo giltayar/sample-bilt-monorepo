@@ -1,6 +1,6 @@
 {
   "name": "@sample-bilt-monorepo/console-snake",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "",
   "type": "module",
   "exports": "./src/console-snake.js",

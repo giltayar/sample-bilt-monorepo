@@ -1,6 +1,6 @@
 {
   "name": "@sample-bilt-monorepo/math-utils",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "type": "module",
   "exports": "./src/math-utils.js",

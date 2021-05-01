@@ -1,6 +1,6 @@
 {
   "name": "@sample-bilt-monorepo/promise-utils",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "type": "module",
   "exports": "./src/promise-utils.js",

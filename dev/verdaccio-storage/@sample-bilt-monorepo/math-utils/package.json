@@ -144,17 +144,90 @@
 				"tarball": "http://localhost:4873/@sample-bilt-monorepo/math-utils/-/@sample-bilt-monorepo/math-utils-1.0.1.tgz"
 			},
 			"contributors": []
+		},
+		"1.0.2": {
+			"name": "@sample-bilt-monorepo/math-utils",
+			"version": "1.0.2",
+			"description": "A library that ???.",
+			"type": "module",
+			"exports": "./src/math-utils.js",
+			"main": "./src/math-utils.js",
+			"types": "./types/src/math-utils.d.ts",
+			"engines": {
+				"node": ">=15.0.0"
+			},
+			"files": [
+				"src",
+				"types"
+			],
+			"scripts": {
+				"build": "concurrently -r 'npm:build:*'",
+				"build:typescript": "rm -rf types && tsc && cp src/*.d.ts types/src",
+				"test": "concurrently -r 'npm:test:*'",
+				"test:mocha-parallel": "npm run mocha -- --parallel",
+				"test:eslint": "eslint --color --max-warnings=0 '**/*.js'",
+				"test:typescript": "tsc --noEmit --emitDeclarationOnly false --pretty",
+				"mocha": "mocha --no-timeouts --exit --color 'test/unit/*.test.js' 'test/integ/*.test.js'"
+			},
+			"keywords": [
+				"javascript",
+				"nodejs"
+			],
+			"author": {
+				"name": "Gil Tayar",
+				"email": "giltayar@sample-bilt-monorepo.com"
+			},
+			"license": "MIT",
+			"repository": {
+				"url": "git+https://github.com/giltayar/sample-bilt-monorepo.git",
+				"directory": "packages/math-utils",
+				"type": "git"
+			},
+			"devDependencies": {
+				"@babel/core": "^7.13.8",
+				"@babel/eslint-parser": "^7.13.8",
+				"@babel/plugin-syntax-top-level-await": "^7.12.13",
+				"@types/chai": "^4.2.15",
+				"@types/chai-subset": "^1.3.3",
+				"@types/mocha": "^8.2.1",
+				"@types/node": "^14.14.32",
+				"chai": "^4.3.3",
+				"chai-subset": "^1.6.0",
+				"concurrently": "^6.0.0",
+				"eslint": "^7.21.0",
+				"eslint-plugin-mocha-no-only": "^1.1.1",
+				"eslint-plugin-node": "^11.1.0",
+				"eslint-plugin-prettier": "^3.3.1",
+				"mocha": "^8.3.1",
+				"prettier": "^2.2.1",
+				"typescript": "^4.2.3"
+			},
+			"readmeFilename": "README.md",
+			"bugs": {
+				"url": "https://github.com/giltayar/sample-bilt-monorepo/issues"
+			},
+			"homepage": "https://github.com/giltayar/sample-bilt-monorepo#readme",
+			"_id": "@sample-bilt-monorepo/math-utils@1.0.2",
+			"_nodeVersion": "15.13.0",
+			"_npmVersion": "7.7.6",
+			"dist": {
+				"integrity": "sha512-yjw+uQ09WVjuK0mcoevE9PmYhJUzW1B5NzDHVsyAKezJvtCMshuMFujKzBV/UowaPux0Lc7qfh6PM9Ny+GPbZQ==",
+				"shasum": "1678310fb0d500071806d7e8fd8cc147fdc9cf61",
+				"tarball": "http://localhost:4873/@sample-bilt-monorepo/math-utils/-/@sample-bilt-monorepo/math-utils-1.0.2.tgz"
+			},
+			"contributors": []
 		}
 	},
 	"time": {
-		"modified": "2021-03-13T16:23:21.550Z",
+		"modified": "2021-05-01T05:32:29.887Z",
 		"created": "2021-03-08T20:57:29.199Z",
 		"1.0.0": "2021-03-08T20:57:29.199Z",
-		"1.0.1": "2021-03-13T16:23:21.550Z"
+		"1.0.1": "2021-03-13T16:23:21.550Z",
+		"1.0.2": "2021-05-01T05:32:29.887Z"
 	},
 	"users": {},
 	"dist-tags": {
-		"latest": "1.0.1"
+		"latest": "1.0.2"
 	},
 	"_uplinks": {},
 	"_distfiles": {},
@@ -166,9 +239,13 @@
 		"math-utils-1.0.1.tgz": {
 			"shasum": "e6e2d3a6d97411999f5cdea241cfdc6503840def",
 			"version": "1.0.1"
+		},
+		"math-utils-1.0.2.tgz": {
+			"shasum": "1678310fb0d500071806d7e8fd8cc147fdc9cf61",
+			"version": "1.0.2"
 		}
 	},
-	"_rev": "8-9d14cc418fded406",
+	"_rev": "12-53539c6cac76580a",
 	"_id": "@sample-bilt-monorepo/math-utils",
 	"readme": "# math-utils\n\nA library that ???.\n\nThis library is JSM-only (does not support `require`-ing it).\n\n## Installation\n\n```sh\nnpm install @sample-bilt-monorepo/math-utils\n```\n\n## Basic use\n\n???\n\nExample:\n\n```js\nimport {} from '@sample-bilt-monorepo/math-utils'\n???\n```\n\n## API\n\n### `???(???)`\n\n???\n\nExample:\n\n```js\nimport {} from '@sample-bilt-monorepo/math-utils'\n???\n```\n\n## Contributing\n\nSee the documentation on contributing code to packages in this monorepo\n[here](../../CONTRIBUTING.md).\n\n### License\n\nMIT"
 }
