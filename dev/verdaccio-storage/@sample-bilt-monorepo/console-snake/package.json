@@ -243,18 +243,182 @@
 				"tarball": "http://localhost:4873/@sample-bilt-monorepo/console-snake/-/@sample-bilt-monorepo/console-snake-1.0.2.tgz"
 			},
 			"contributors": []
+		},
+		"1.0.3": {
+			"name": "@sample-bilt-monorepo/console-snake",
+			"version": "1.0.3",
+			"description": "A CLI that ???",
+			"type": "module",
+			"exports": "./src/console-snake.js",
+			"main": "./src/console-snake.js",
+			"bin": {
+				"console-snake": "src/run-console-snake.js"
+			},
+			"types": "./types/src/console-snake.d.ts",
+			"engines": {
+				"node": ">=15.0.0"
+			},
+			"files": [
+				"src",
+				"types"
+			],
+			"publishConfig": {
+				"access": "restricted",
+				"registry": "https://npm.pkg.github.com"
+			},
+			"scripts": {
+				"start": "node src/run-console-snake.js",
+				"build": "concurrently -r 'npm:build:*'",
+				"build:typescript": "rm -rf types && tsc && cp src/*.d.ts types/src",
+				"test": "concurrently -r 'npm:test:*'",
+				"test:eslint": "eslint --max-warnings=0 --color '**/*.js'",
+				"test:typescript": "tsc --noEmit --emitDeclarationOnly false --pretty",
+				"mocha": "mocha --no-timeouts --exit --color 'test/unit/*.test.js' 'test/integ/*.test.js' 'test/e2e/*.test.js'"
+			},
+			"keywords": [
+				"javascript",
+				"nodejs"
+			],
+			"license": "MIT",
+			"repository": {
+				"url": "git+https://github.com/sample-bilt-monorepo/mono.git",
+				"directory": "packages/console-snake",
+				"type": "git"
+			},
+			"dependencies": {
+				"@sample-bilt-monorepo/promise-utils": "^1.0.0",
+				"@sample-bilt-monorepo/snake": "^1.0.5",
+				"yargs": "^16.2.0"
+			},
+			"devDependencies": {
+				"@babel/core": "^7.13.10",
+				"@babel/eslint-parser": "^7.13.10",
+				"@babel/plugin-syntax-top-level-await": "^7.12.13",
+				"@types/chai": "^4.2.15",
+				"@types/chai-subset": "^1.3.3",
+				"@types/mocha": "^8.2.1",
+				"@types/node": "^14.14.33",
+				"@types/yargs": "^16.0.0",
+				"chai": "^4.3.3",
+				"chai-subset": "^1.6.0",
+				"concurrently": "^6.0.0",
+				"eslint": "^7.21.0",
+				"eslint-plugin-mocha-no-only": "^1.1.1",
+				"eslint-plugin-node": "^11.1.0",
+				"eslint-plugin-prettier": "^3.3.1",
+				"mocha": "^8.3.1",
+				"prettier": "^2.2.1",
+				"typescript": "^4.2.3"
+			},
+			"readmeFilename": "README.md",
+			"bugs": {
+				"url": "https://github.com/sample-bilt-monorepo/mono/issues"
+			},
+			"homepage": "https://github.com/sample-bilt-monorepo/mono#readme",
+			"_id": "@sample-bilt-monorepo/console-snake@1.0.3",
+			"_nodeVersion": "15.11.0",
+			"_npmVersion": "7.6.0",
+			"dist": {
+				"integrity": "sha512-T7FclrW1BWWX9Gd3jrlAA2hwdPXpMepqJOvTZXC2afawG5gfo9S1jV9nYpfjqBNVN32inif8pErpOkO/cnWfXw==",
+				"shasum": "1805d5e6855cc75def61dedc221eda24a14c6977",
+				"tarball": "http://localhost:4873/@sample-bilt-monorepo/console-snake/-/@sample-bilt-monorepo/console-snake-1.0.3.tgz"
+			},
+			"contributors": []
+		},
+		"1.0.4": {
+			"name": "@sample-bilt-monorepo/console-snake",
+			"version": "1.0.4",
+			"description": "A CLI that ???",
+			"type": "module",
+			"exports": "./src/console-snake.js",
+			"main": "./src/console-snake.js",
+			"bin": {
+				"console-snake": "src/run-console-snake.js"
+			},
+			"types": "./types/src/console-snake.d.ts",
+			"engines": {
+				"node": ">=15.0.0"
+			},
+			"files": [
+				"src",
+				"types"
+			],
+			"publishConfig": {
+				"access": "restricted",
+				"registry": "https://npm.pkg.github.com"
+			},
+			"scripts": {
+				"start": "node src/run-console-snake.js",
+				"build": "concurrently -r 'npm:build:*'",
+				"build:typescript": "rm -rf types && tsc && cp src/*.d.ts types/src",
+				"test": "concurrently -r 'npm:test:*'",
+				"test:eslint": "eslint --max-warnings=0 --color '**/*.js'",
+				"test:typescript": "tsc --noEmit --emitDeclarationOnly false --pretty",
+				"mocha": "mocha --no-timeouts --exit --color 'test/unit/*.test.js' 'test/integ/*.test.js' 'test/e2e/*.test.js'"
+			},
+			"keywords": [
+				"javascript",
+				"nodejs"
+			],
+			"license": "MIT",
+			"repository": {
+				"url": "git+https://github.com/sample-bilt-monorepo/mono.git",
+				"directory": "packages/console-snake",
+				"type": "git"
+			},
+			"dependencies": {
+				"@sample-bilt-monorepo/promise-utils": "^1.0.0",
+				"@sample-bilt-monorepo/snake": "^1.0.5",
+				"yargs": "^16.2.0"
+			},
+			"devDependencies": {
+				"@babel/core": "^7.13.10",
+				"@babel/eslint-parser": "^7.13.10",
+				"@babel/plugin-syntax-top-level-await": "^7.12.13",
+				"@types/chai": "^4.2.15",
+				"@types/chai-subset": "^1.3.3",
+				"@types/mocha": "^8.2.1",
+				"@types/node": "^14.14.33",
+				"@types/yargs": "^16.0.0",
+				"chai": "^4.3.3",
+				"chai-subset": "^1.6.0",
+				"concurrently": "^6.0.0",
+				"eslint": "^7.21.0",
+				"eslint-plugin-mocha-no-only": "^1.1.1",
+				"eslint-plugin-node": "^11.1.0",
+				"eslint-plugin-prettier": "^3.3.1",
+				"mocha": "^8.3.1",
+				"prettier": "^2.2.1",
+				"typescript": "^4.2.3"
+			},
+			"readmeFilename": "README.md",
+			"bugs": {
+				"url": "https://github.com/sample-bilt-monorepo/mono/issues"
+			},
+			"homepage": "https://github.com/sample-bilt-monorepo/mono#readme",
+			"_id": "@sample-bilt-monorepo/console-snake@1.0.4",
+			"_nodeVersion": "15.11.0",
+			"_npmVersion": "7.11.1",
+			"dist": {
+				"integrity": "sha512-BrlILxv/ip6D5MWvZCG3LzABV+qbggz7UXlUkA07IlDaV8kpOT05qv6S9C+Qj9QBWdCW5ZVq3uQUIUlLQBbe2w==",
+				"shasum": "c3dbace9d2361194b64b1079da09d40f69b55540",
+				"tarball": "http://localhost:4873/@sample-bilt-monorepo/console-snake/-/@sample-bilt-monorepo/console-snake-1.0.4.tgz"
+			},
+			"contributors": []
 		}
 	},
 	"time": {
-		"modified": "2021-03-14T18:52:39.204Z",
+		"modified": "2021-04-28T14:01:26.611Z",
 		"created": "2021-03-13T16:24:05.019Z",
 		"1.0.0": "2021-03-13T16:24:05.019Z",
 		"1.0.1": "2021-03-14T18:50:08.802Z",
-		"1.0.2": "2021-03-14T18:52:39.204Z"
+		"1.0.2": "2021-03-14T18:52:39.204Z",
+		"1.0.3": "2021-03-28T13:10:27.157Z",
+		"1.0.4": "2021-04-28T14:01:26.611Z"
 	},
 	"users": {},
 	"dist-tags": {
-		"latest": "1.0.2"
+		"latest": "1.0.4"
 	},
 	"_uplinks": {},
 	"_distfiles": {},
@@ -270,9 +434,17 @@
 		"console-snake-1.0.2.tgz": {
 			"shasum": "ba4b1b2de2f581496e41f1476a5c235e9dee1744",
 			"version": "1.0.2"
+		},
+		"console-snake-1.0.3.tgz": {
+			"shasum": "1805d5e6855cc75def61dedc221eda24a14c6977",
+			"version": "1.0.3"
+		},
+		"console-snake-1.0.4.tgz": {
+			"shasum": "c3dbace9d2361194b64b1079da09d40f69b55540",
+			"version": "1.0.4"
 		}
 	},
-	"_rev": "11-7f81b4958cd4664b",
+	"_rev": "19-095da377bc44ed5c",
 	"_id": "@sample-bilt-monorepo/console-snake",
 	"readme": "# create\n\nA CLI that ???\n\n## Installation\n\n```sh\nnpm install --global @sample-bilt-monorepo/templatemplate\n```\n\nThe above installs a command with the name `console-snake`.\n\n## Basic use\n\n???\n\n## CLI Parameters\n\n`console-snake ???`\n\n- `???`: ???\n\n## Contributing\n\nSee the documentation on contributing code to packages in this monorepo\n[here](../../CONTRIBUTING.md).\n\n### License\n\nMIT\n"
 }

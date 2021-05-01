@@ -119,7 +119,7 @@ describe('snake (unit)', function () {
       expect(board.snake).to.eql([{x: 16, y: 15}])
     })
 
-    it('should continuing moving if only one enqueud command', () => {
+    it('should continuing moving if only one enqueued command', () => {
       const commandedBoard = m.enqueueCommand(initialBoard, 'turn-to-south')
       const {board, hasCollided} = m.executeTick(m.executeTick(commandedBoard, false).board, false)
 
@@ -128,7 +128,7 @@ describe('snake (unit)', function () {
       expect(board.snake).to.eql([{x: 15, y: 17}])
     })
 
-    it('should switch twice if two  enqueud commands', () => {
+    it('should switch twice if two  enqueued commands', () => {
       const commandedBoard = m.enqueueCommand(
         m.enqueueCommand(initialBoard, 'turn-to-south'),
         'turn-to-west',
@@ -138,6 +138,85 @@ describe('snake (unit)', function () {
       expect(hasCollided).to.be.false
       expect(board.apples).to.eql(initialBoard.apples)
       expect(board.snake).to.eql([{x: 14, y: 16}])
+    })
+
+    it('should collide when moving to apple direction and apple is next BoardItem', () => {
+      const commandedBoard = m.enqueueCommand(initialBoard, 'turn-to-south')
+      const newApple = {x: commandedBoard.snake[0].x, y: commandedBoard.snake[0].y + 1}
+      commandedBoard.apples = [newApple]
+      const {hasCollided} = m.executeTick(commandedBoard, false)
+
+      expect(hasCollided).to.be.true
+    })
+
+    it('should not collide when moving to apple direction and apple is not next BoardItem', () => {
+      const commandedBoard = m.enqueueCommand(initialBoard, 'turn-to-south')
+      const newApple = {x: commandedBoard.snake[0].x, y: commandedBoard.snake[0].y + 2}
+      commandedBoard.apples = [newApple]
+      const {hasCollided} = m.executeTick(commandedBoard, false)
+
+      expect(hasCollided).to.be.false
+    })
+
+    it('should not be alive when moving out board to east', () => {
+      const commandedBoard = m.enqueueCommand(initialBoard, 'turn-to-east')
+      commandedBoard.snake = [{x: 29, y: 10}]
+      const {board: boardA, isAlive: isAliveA} = m.executeTick(commandedBoard, false)
+
+      expect(isAliveA).to.be.true
+
+      const {isAlive: isAliveB} = m.executeTick(boardA, false)
+
+      expect(isAliveB).to.be.false
+    })
+
+    it('should not be alive when moving out board to west', () => {
+      const commandedBoard = m.enqueueCommand(initialBoard, 'turn-to-west')
+      commandedBoard.snake = [{x: 1, y: 10}]
+      const {board: boardA, isAlive: isAliveA} = m.executeTick(commandedBoard, false)
+
+      expect(isAliveA).to.be.true
+
+      const {isAlive: isAliveB} = m.executeTick(boardA, false)
+
+      expect(isAliveB).to.be.false
+    })
+
+    it('should not be alive when moving out board to south', () => {
+      const commandedBoard = m.enqueueCommand(initialBoard, 'turn-to-south')
+      commandedBoard.snake = [{x: 29, y: 29}]
+      const {board: boardA, isAlive: isAliveA} = m.executeTick(commandedBoard, false)
+
+      expect(isAliveA).to.be.true
+
+      const {isAlive: isAliveB} = m.executeTick(boardA, false)
+
+      expect(isAliveB).to.be.false
+    })
+
+    it('should not be alive when moving out board to north', () => {
+      const commandedBoard = m.enqueueCommand(initialBoard, 'turn-to-north')
+      commandedBoard.snake = [{x: 29, y: 1}]
+      const {board: boardA, isAlive: isAliveA} = m.executeTick(commandedBoard, false)
+
+      expect(isAliveA).to.be.true
+
+      const {isAlive: isAliveB} = m.executeTick(boardA, false)
+
+      expect(isAliveB).to.be.false
+    })
+
+    it('should not be alive when snake head collide with snake', () => {
+      const commandedBoard = m.enqueueCommand(initialBoard, 'turn-to-south')
+      const newApple = {x: commandedBoard.snake[0].x, y: commandedBoard.snake[0].y + 2}
+      commandedBoard.apples = [newApple]
+      const {board: boardA, isAlive: isAliveA} = m.executeTick(commandedBoard, false)
+
+      expect(isAliveA).to.be.true
+
+      const {isAlive: isAliveB} = m.executeTick(boardA, false)
+
+      expect(isAliveB).to.be.true
     })
   })
 

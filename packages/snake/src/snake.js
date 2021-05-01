@@ -53,14 +53,14 @@ export function addApple(board, {TEST_BoardItem = undefined} = {}) {
   for (const _ of range(0, board.width * board.height)) {
     const x = (TEST_BoardItem || {}).x || randomBetween(0, board.width) | 0
     const y = (TEST_BoardItem || {}).y || randomBetween(0, board.height) | 0
-
-    if (conflictsWith(x, y, board.apples) || conflictsWith(x, y, board.snake)) {
+    const newBoardItem = makeBoardItem(x, y)
+    if (conflictsWith(newBoardItem, board.apples) || conflictsWith(newBoardItem, board.snake)) {
       continue
     }
 
     return {
       ...board,
-      apples: [...(board?.apples ?? []), makeBoardItem(x, y)],
+      apples: [...(board?.apples ?? []), newBoardItem],
     }
   }
 
@@ -79,10 +79,11 @@ export function enqueueCommand(board, command) {
 /**
  * @param {Board} board
  * @param {boolean} isSnakeLengtheningTick
- * @returns {{board: Board, hasCollided: boolean}}
+ * @returns {{board: Board, hasCollided: boolean, isAlive: boolean}}
  */
 export function executeTick(board, isSnakeLengtheningTick) {
   let hasCollided = false
+  let isAlive = true
   const boardAfterTick = produce(board, (board) => {
     const snake = board.snake
     const tailOfSnake = snake[snake.length - 1]
@@ -92,6 +93,10 @@ export function executeTick(board, isSnakeLengtheningTick) {
     }
     const collided = moveSnake(board.snake, board.snakeDirection, board.apples)
 
+    if (outOfBounds(board, snake) || conflictsWith(snake[0], snake.slice(1))) {
+      isAlive = false
+      return
+    }
     if (collided) {
       hasCollided = true
       return
@@ -102,7 +107,16 @@ export function executeTick(board, isSnakeLengtheningTick) {
     }
   })
 
-  return {board: boardAfterTick, hasCollided}
+  return {board: boardAfterTick, hasCollided, isAlive}
+}
+
+/**
+ * @param {Board} board
+ * @param {any} snake
+ * @returns {boolean}
+ */
+function outOfBounds(board, snake) {
+  return snake[0].x > board.width || snake[0].x < 0 || snake[0].y > board.height || snake[0].y < 0
 }
 
 /**
@@ -115,12 +129,11 @@ function makeBoardItem(x, y) {
 }
 
 /**
- * @param {number} x
- * @param {number} y
+ * @param {BoardItem} newItem
  * @param {BoardItem[]} items
  */
-function conflictsWith(x, y, items) {
-  return !!items.find((item) => item.x === x && item.y === y)
+function conflictsWith(newItem, items) {
+  return !!items.find((item) => item.x === newItem.x && item.y === newItem.y)
 }
 
 /**
