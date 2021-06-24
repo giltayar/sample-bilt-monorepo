@@ -2,6 +2,7 @@ name: Build sample-bilt-repo
 on: ['push', 'pull_request']
 jobs:
   build:
+    name: "Build monorepo using Bilt"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
