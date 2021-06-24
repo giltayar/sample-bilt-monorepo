@@ -16,6 +16,7 @@ jobs:
     steps:
     - name: "Build"
       run: |
-        echo It works: ${{ needs.generate-build-information.outputs.sample-bilt-monorepo__snake__needs }}!
-        echo simple ${{ needs.generate-build-information.outputs.x }}
-        echo not needy: ${{github.action}}
+        echo Result: ${{needs.generate-build-information.result}}!
+        echo It works: ${{needs.generate-build-information.outputs.sample-bilt-monorepo__snake__needs}}!
+        echo simple ${{needs.generate-build-information.outputs.x}}!
+        echo not needy: ${{github.head_ref}}!
