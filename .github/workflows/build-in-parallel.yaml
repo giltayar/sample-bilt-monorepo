@@ -6,6 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: "Generate build information"
+      id: "generateBuildInformationStep"
       run: |
         # echo ::set-output name=sample-bilt-monorepo__snake__needs::@sample-bilt-monorepo/math-utils
         echo ::warning file=lalala,line=111,col=111::oops
@@ -17,6 +18,6 @@ jobs:
     steps:
     - name: "Build"
       run: |
-        echo Result: ${{needs.generateBuildInformation.result}}!
-        echo Output: ${{toJSON(needs.generateBuildInformation)}}!
-        echo not needy: ${{github.repository}}-${{github.ref}}!
+        echo Result: ${{needs.generateBuildInformation.result}}
+        echo Output: ${{toJSON(needs)}}
+        echo not needy: ${{github.repository}}-${{github.ref}}
