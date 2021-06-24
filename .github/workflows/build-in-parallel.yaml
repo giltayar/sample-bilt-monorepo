@@ -21,8 +21,5 @@ jobs:
     - name: "Build"
       run: |
         echo Result: ${{needs.generateBuildInformation.result}}
-        echo Output: <<EOF
-        ${{toJSON(needs.generateBuildInformation)}}
-        EOF
-        echo Output: ${{needs.generateBuildInformation.x}}}
+        echo Output: ${{needs.generateBuildInformation.outputs.x}}}
         echo not needy: ${{github.repository}}-${{github.ref}}
