@@ -23,4 +23,4 @@ jobs:
       run: |
         echo Result: ${{needs.generateBuildInformation.result}}
         echo Output: ${{needs.generateBuildInformation.outputs.sample-bilt-monorepo__snake__needs}}
-        echo not needy: ${{github.repository}}-${{github.ref}
+        echo not needy: ${{github.repository}}-${{github.ref}}
