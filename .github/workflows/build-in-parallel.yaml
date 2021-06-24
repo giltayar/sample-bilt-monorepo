@@ -1,7 +1,7 @@
 name: Build sample-bilt-repo (parallel)
 on: ['push']
 jobs:
-  generate-build-information:
+  generateBuildInformation:
     name: "Generate build information"
     runs-on: ubuntu-latest
     steps:
@@ -12,12 +12,12 @@ jobs:
   build-sample-bilt-monorepo__snake:
     name: "@sample-bilt-monorepo/snake"
     runs-on: ubuntu-latest
-    needs: "generate-build-information"
+    needs: "generateBuildInformation"
     steps:
     - name: "Build"
       run: |
-        echo Result: ${{needs.generate-build-information.result}}!
-        echo Output: ${{toJSON(github}}!
-        echo It works: ${{needs.generate-build-information.outputs.sample-bilt-monorepo__snake__needs}}!
-        echo simple ${{needs.generate-build-information.outputs.x}}!
+        echo Result: ${{needs.generateBuildInformation.result}}!
+        echo Output: ${{toJSON(github)}}!
+        echo It works: ${{needs.generateBuildInformation.outputs.sample-bilt-monorepo__snake__needs}}!
+        echo simple ${{needs.generateBuildInformation.outputs.x}}!
         echo not needy: ${{github.repository}}-${{github.ref}}!
