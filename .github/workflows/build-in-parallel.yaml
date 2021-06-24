@@ -17,7 +17,7 @@ jobs:
     - name: "Build"
       run: |
         echo Result: ${{needs.generate-build-information.result}}!
-        echo Output: ${{toJSON(needs.generate-build-information)}}!
+        echo Output: ${{toJSON(github}}!
         echo It works: ${{needs.generate-build-information.outputs.sample-bilt-monorepo__snake__needs}}!
         echo simple ${{needs.generate-build-information.outputs.x}}!
         echo not needy: ${{github.repository}}-${{github.ref}}!
