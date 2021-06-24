@@ -26,4 +26,3 @@ jobs:
         EOF
         echo Output: ${{needs.generateBuildInformation.x}}}
         echo not needy: ${{github.repository}}-${{github.ref}}
-0
