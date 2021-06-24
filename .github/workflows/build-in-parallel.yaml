@@ -8,6 +8,7 @@ jobs:
     - name: "Generate build information"
       run: |
         # echo ::set-output name=sample-bilt-monorepo__snake__needs::@sample-bilt-monorepo/math-utils
+        ::warning file=lalala,line=111,col=111::oops
         echo ::set-output name=x::y
   build-sample-bilt-monorepo__snake:
     name: "@sample-bilt-monorepo/snake"
@@ -18,6 +19,4 @@ jobs:
       run: |
         echo Result: ${{needs.generateBuildInformation.result}}!
         echo Output: ${{toJSON(needs.generateBuildInformation)}}!
-        echo It works: ${{needs.generateBuildInformation.outputs.sample-bilt-monorepo__snake__needs}}!
-        echo simple ${{needs.generateBuildInformation.outputs.x}}!
         echo not needy: ${{github.repository}}-${{github.ref}}!
