@@ -16,7 +16,9 @@ jobs:
   build-sample-bilt-monorepo__snake:
     name: "@sample-bilt-monorepo/snake"
     runs-on: ubuntu-latest
-    needs: ${{fromJSON(needs.generateBuildInformation.outputs.sample-bilt-monorepo__snake__needs)}}
+    needs:
+      - generateBuildInformation
+      ${{fromJSON(needs.generateBuildInformation.outputs.sample-bilt-monorepo__snake__needs)}}
     steps:
     - name: "Build"
       run: |
