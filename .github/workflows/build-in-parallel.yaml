@@ -12,6 +12,7 @@ jobs:
         echo ::warning file=lalala,line=111,col=111::oops
         echo '::set-output name=x::y'
     outputs:
+      sample-bilt-monorepo__snake__needs: ${{steps.generateBuildInformation.outputs.sample-bilt-monorepo__snake__needs}}
       x: ${{steps.generateBuildInformation.outputs.x}}
   build-sample-bilt-monorepo__snake:
     name: "@sample-bilt-monorepo/snake"
@@ -21,5 +22,5 @@ jobs:
     - name: "Build"
       run: |
         echo Result: ${{needs.generateBuildInformation.result}}
-        echo Output: ${{needs.generateBuildInformation.outputs.x}}}
-        echo not needy: ${{github.repository}}-${{github.ref}}
+        echo Output: ${{needs.generateBuildInformation.outputs.sample-bilt-monorepo__snake__needs}}
+        echo not needy: ${{github.repository}}-${{github.ref}
