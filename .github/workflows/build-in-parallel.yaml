@@ -9,7 +9,7 @@ jobs:
       run: |
         # echo ::set-output name=sample-bilt-monorepo__snake__needs::@sample-bilt-monorepo/math-utils
         echo ::warning file=lalala,line=111,col=111::oops
-        echo ::set-output name=x::y
+        echo '::set-output name=x::y'
   build-sample-bilt-monorepo__snake:
     name: "@sample-bilt-monorepo/snake"
     runs-on: ubuntu-latest
