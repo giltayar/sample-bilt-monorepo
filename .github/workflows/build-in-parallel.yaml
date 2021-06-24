@@ -8,6 +8,7 @@ jobs:
     - name: "Generate build information"
       run: |
         echo ::set-output name=sample-bilt-monorepo__snake__needs::@sample-bilt-monorepo/math-utils
+        echo ::set-output name=x::y
   build-sample-bilt-monorepo__snake:
     name: "@sample-bilt-monorepo/snake"
     runs-on: ubuntu-latest
@@ -15,4 +16,5 @@ jobs:
     steps:
     - name: "Build"
       run: |
-        echo It works: ${{needs.generate-build-information.output.sample-bilt-monorepo__snake__needs}}!
+        echo It works: ${{needs.generate-build-information.outputs.sample-bilt-monorepo__snake__needs}}!
+        echo simple ${{needs.generate-build-information.outputs.x}}
