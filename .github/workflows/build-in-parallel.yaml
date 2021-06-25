@@ -41,7 +41,7 @@ jobs:
     needs:
       - generateBuildInformation
     steps:
-    - run: echo ${{toJSON(needs.generateBuildInformation.outputs)}}
+    - run: echo ${{toJSON(needs)}}
     - uses: actions/checkout@v2
       with:
         fetch-depth: 0
