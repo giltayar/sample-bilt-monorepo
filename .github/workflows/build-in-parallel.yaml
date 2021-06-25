@@ -56,7 +56,7 @@ jobs:
         node-version: 15
         registry-url: 'https://registry.npmjs.org'
     - name: Install Bilt
-      run:npm install -g @bilt/cli
+      run: npm install -g @bilt/cli
     - name: "Build"
       run: bilt @sample-bilt-monorepo/math-utils -m 'CI Build'
   build-_sample-bilt-monorepo__promise-utils:
@@ -80,7 +80,7 @@ jobs:
         node-version: 15
         registry-url: 'https://registry.npmjs.org'
     - name: Install Bilt
-      run:npm install -g @bilt/cli
+      run: npm install -g @bilt/cli
     - name: "Build"
       run: bilt @sample-bilt-monorepo/promise-utils -m 'CI Build'
   build-_sample-bilt-monorepo__snake:
@@ -105,7 +105,7 @@ jobs:
         node-version: 15
         registry-url: 'https://registry.npmjs.org'
     - name: Install Bilt
-      run:npm install -g @bilt/cli
+      run: npm install -g @bilt/cli
     - name: "Build"
       run: bilt @sample-bilt-monorepo/snake -m 'CI Build'
   build-_sample-bilt-monorepo__console-snake:
@@ -131,6 +131,6 @@ jobs:
         node-version: 15
         registry-url: 'https://registry.npmjs.org'
     - name: Install Bilt
-      run:npm install -g @bilt/cli
+      run: npm install -g @bilt/cli
     - name: "Build"
       run: bilt @sample-bilt-monorepo/console-snake -m 'CI Build'
