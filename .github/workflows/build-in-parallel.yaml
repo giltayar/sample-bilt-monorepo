@@ -9,19 +9,56 @@ jobs:
       id: "generateBuildInformation"
       run: |
         echo <<EOF
-          ::set-output name=sample-bilt-monorepo__snake__needs::["generateBuildInformation", "@sample-bilt-monorepo/math-utils"]
+          ::set-output name=needs-build-_sample-bilt-monorepo__math-utils::false
+          ::set-output name=needs-build-_sample-bilt-monorepo__promise-utils::true
+          ::set-output name=needs-build-_sample-bilt-monorepo__snake::true
+          ::set-output name=needs-build-_sample-bilt-monorepo__console-snake::true
         EOF
     outputs:
-      sample-bilt-monorepo__snake__run: 'false'
-  build-sample-bilt-monorepo__snake:
-    if: ${{needs.generateBuildInformation.outputs.sample-bilt-monorepo__snake__run == 'true'}}
-    name: "@sample-bilt-monorepo/snake"
+      needs-build-_sample-bilt-monorepo__math-utils: ${{steps.generateBuildInformation.outputs.needs-build-_sample-bilt-monorepo__math-utils}}
+      needs-build-_sample-bilt-monorepo__promise-utils: ${{steps.generateBuildInformation.outputs.needs-build-_sample-bilt-monorepo__promise-utils}}
+      needs-build-_sample-bilt-monorepo__snake: ${{steps.generateBuildInformation.outputs.needs-build-_sample-bilt-monorepo__snake}}
+      needs-build-_sample-bilt-monorepo__console-snake: ${{steps.generateBuildInformation.outputs.needs-build-_sample-bilt-monorepo__console-snake}}
+  build-_sample-bilt-monorepo__math-utils:
+    name: "@sample-bilt-monorepo/math-utils"
+    if: ${{needs.generateBuildInformation.outputs.needs-build-_sample-bilt-monorepo__math-utils == 'true'}}
     runs-on: ubuntu-latest
     needs:
       - generateBuildInformation
     steps:
     - name: "Build"
       run: |
-        echo Result: ${{needs.generateBuildInformation.result}}
-        echo Output: ${{needs.generateBuildInformation.outputs.sample-bilt-monorepo__snake__run}}
-        echo not needy: ${{github.repository}}-${{github.ref}}
+        bilt @sample-bilt-monorepo/math-utils -m 'CI Build'
+  build-_sample-bilt-monorepo__promise-utils:
+    name: "@sample-bilt-monorepo/promise-utils"
+    if: ${{needs.generateBuildInformation.outputs.needs-build-_sample-bilt-monorepo__promise-utils == 'true'}}
+    runs-on: ubuntu-latest
+    needs:
+      - generateBuildInformation
+    steps:
+    - name: "Build"
+      run: |
+        bilt @sample-bilt-monorepo/promise-utils -m 'CI Build'
+  build-_sample-bilt-monorepo__snake:
+    name: "@sample-bilt-monorepo/snake"
+    if: ${{needs.generateBuildInformation.outputs.needs-build-_sample-bilt-monorepo__snake == 'true'}}
+    runs-on: ubuntu-latest
+    needs:
+      - generateBuildInformation
+      - build-_sample-built-monorepo__math-utils
+    steps:
+    - name: "Build"
+      run: |
+        bilt @sample-bilt-monorepo/snake -m 'CI Build'
+  build-_sample-bilt-monorepo__console-snake:
+    name: "@sample-bilt-monorepo/console-snake"
+    if: ${{needs.generateBuildInformation.outputs.needs-build-_sample-bilt-monorepo__console-snake == 'true'}}
+    runs-on: ubuntu-latest
+    needs:
+      - generateBuildInformation
+      - build-_sample-built-monorepo__promise-utils
+      - build-_sample-built-monorepo__snake
+    steps:
+    - name: "Build"
+      run: |
+        bilt @sample-bilt-monorepo/console-snake -m 'CI Build'
