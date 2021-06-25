@@ -45,7 +45,7 @@ jobs:
     runs-on: ubuntu-latest
     needs:
       - generateBuildInformation
-      - build-_sample-built-monorepo__math-utils
+      - build-_sample-bilt-monorepo__math-utils
     steps:
     - name: "Build"
       run: |
@@ -56,8 +56,8 @@ jobs:
     runs-on: ubuntu-latest
     needs:
       - generateBuildInformation
-      - build-_sample-built-monorepo__promise-utils
-      - build-_sample-built-monorepo__snake
+      - build-_sample-bilt-monorepo__promise-utils
+      - build-_sample-bilt-monorepo__snake
     steps:
     - name: "Build"
       run: |
