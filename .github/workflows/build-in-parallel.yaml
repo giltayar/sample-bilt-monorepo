@@ -5,14 +5,29 @@ jobs:
     name: "Generate build information"
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    - name: Enable Git Push
+      run: |
+        git config --global user.email "bilt-ci@tayar.org"
+        git config --global user.name "Bilt CI"
+        git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
+    - name: Use Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: 15
+        registry-url: 'https://registry.npmjs.org'
+    - name: Install Bilt
+      run: npm install -g @bilt/cli
     - name: "Generate build information"
       id: "generateBuildInformation"
       run: |
         echo <<EOF
-          ::set-output name=needs-build-_sample-bilt-monorepo__math-utils::false
+          ::set-output name=needs-build-_sample-bilt-monorepo__math-utils::true
           ::set-output name=needs-build-_sample-bilt-monorepo__promise-utils::true
           ::set-output name=needs-build-_sample-bilt-monorepo__snake::true
-          ::set-output name=needs-build-_sample-bilt-monorepo__console-snake::true
+          ::set-output name=needs-build-_sample-bilt-monorepo__console-snake::false
         EOF
     outputs:
       needs-build-_sample-bilt-monorepo__math-utils: ${{steps.generateBuildInformation.outputs.needs-build-_sample-bilt-monorepo__math-utils}}
@@ -21,14 +36,29 @@ jobs:
       needs-build-_sample-bilt-monorepo__console-snake: ${{steps.generateBuildInformation.outputs.needs-build-_sample-bilt-monorepo__console-snake}}
   build-_sample-bilt-monorepo__math-utils:
     name: "@sample-bilt-monorepo/math-utils"
-    if: ${{needs.generateBuildInformation.outputs.needs-build-_sample-bilt-monorepo__math-utils == 'true'}}
+    #if: ${{needs.generateBuildInformation.outputs.needs-build-_sample-bilt-monorepo__math-utils == 'true'}}
     runs-on: ubuntu-latest
     needs:
       - generateBuildInformation
     steps:
-    - name: "Build"
+    - run: echo ${{toJSON(needs.generateBuildInformation.outputs)}}
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    - name: Enable Git Push
       run: |
-        bilt @sample-bilt-monorepo/math-utils -m 'CI Build'
+        git config --global user.email "bilt-ci@tayar.org"
+        git config --global user.name "Bilt CI"
+        git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
+    - name: Use Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: 15
+        registry-url: 'https://registry.npmjs.org'
+    - name: Install Bilt
+      run:npm install -g @bilt/cli
+    - name: "Build"
+      run: bilt @sample-bilt-monorepo/math-utils -m 'CI Build'
   build-_sample-bilt-monorepo__promise-utils:
     name: "@sample-bilt-monorepo/promise-utils"
     if: ${{needs.generateBuildInformation.outputs.needs-build-_sample-bilt-monorepo__promise-utils == 'true'}}
@@ -36,9 +66,23 @@ jobs:
     needs:
       - generateBuildInformation
     steps:
-    - name: "Build"
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    - name: Enable Git Push
       run: |
-        bilt @sample-bilt-monorepo/promise-utils -m 'CI Build'
+        git config --global user.email "bilt-ci@tayar.org"
+        git config --global user.name "Bilt CI"
+        git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
+    - name: Use Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: 15
+        registry-url: 'https://registry.npmjs.org'
+    - name: Install Bilt
+      run:npm install -g @bilt/cli
+    - name: "Build"
+      run: bilt @sample-bilt-monorepo/promise-utils -m 'CI Build'
   build-_sample-bilt-monorepo__snake:
     name: "@sample-bilt-monorepo/snake"
     if: ${{needs.generateBuildInformation.outputs.needs-build-_sample-bilt-monorepo__snake == 'true'}}
@@ -47,9 +91,23 @@ jobs:
       - generateBuildInformation
       - build-_sample-bilt-monorepo__math-utils
     steps:
-    - name: "Build"
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    - name: Enable Git Push
       run: |
-        bilt @sample-bilt-monorepo/snake -m 'CI Build'
+        git config --global user.email "bilt-ci@tayar.org"
+        git config --global user.name "Bilt CI"
+        git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
+    - name: Use Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: 15
+        registry-url: 'https://registry.npmjs.org'
+    - name: Install Bilt
+      run:npm install -g @bilt/cli
+    - name: "Build"
+      run: bilt @sample-bilt-monorepo/snake -m 'CI Build'
   build-_sample-bilt-monorepo__console-snake:
     name: "@sample-bilt-monorepo/console-snake"
     if: ${{needs.generateBuildInformation.outputs.needs-build-_sample-bilt-monorepo__console-snake == 'true'}}
@@ -59,6 +117,20 @@ jobs:
       - build-_sample-bilt-monorepo__promise-utils
       - build-_sample-bilt-monorepo__snake
     steps:
-    - name: "Build"
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    - name: Enable Git Push
       run: |
-        bilt @sample-bilt-monorepo/console-snake -m 'CI Build'
+        git config --global user.email "bilt-ci@tayar.org"
+        git config --global user.name "Bilt CI"
+        git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
+    - name: Use Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: 15
+        registry-url: 'https://registry.npmjs.org'
+    - name: Install Bilt
+      run:npm install -g @bilt/cli
+    - name: "Build"
+      run: bilt @sample-bilt-monorepo/console-snake -m 'CI Build'
