@@ -28,19 +28,18 @@ jobs:
         echo ::set-output name=needs-build-_sample-bilt-monorepo__snake::true
         echo ::set-output name=needs-build-_sample-bilt-monorepo__console-snake::false
     outputs:
-      needs-build-_sample-bilt-monorepo__math-utils: "x${{toJSON(steps.generateBuildInformation)}}"
+      needs-build-_sample-bilt-monorepo__math-utils: "${{steps.generateBuildInformation.outputs.needs-build-_sample-bilt-monorepo__math-utils}}"
       needs-build-_sample-bilt-monorepo__promise-utils: "${{steps.generateBuildInformation.outputs.needs-build-_sample-bilt-monorepo__promise-utils}}"
       needs-build-_sample-bilt-monorepo__snake: "${{steps.generateBuildInformation.outputs.needs-build-_sample-bilt-monorepo__snake}}"
       needs-build-_sample-bilt-monorepo__console-snake: "${{steps.generateBuildInformation.outputs.needs-build-_sample-bilt-monorepo__console-snake}}"
       x: yabadabadoo
   build-_sample-bilt-monorepo__math-utils:
     name: "@sample-bilt-monorepo/math-utils"
-    #if: ${{needs.generateBuildInformation.outputs.needs-build-_sample-bilt-monorepo__math-utils == 'true'}}
+    if: ${{needs.generateBuildInformation.outputs.needs-build-_sample-bilt-monorepo__math-utils == 'true'}}
     runs-on: ubuntu-latest
     needs:
       - generateBuildInformation
     steps:
-    - run: echo ${{toJSON(needs)}}
     - uses: actions/checkout@v2
       with:
         fetch-depth: 0
