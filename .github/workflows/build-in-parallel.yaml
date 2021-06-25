@@ -30,10 +30,10 @@ jobs:
           ::set-output name=needs-build-_sample-bilt-monorepo__console-snake::false
         EOF
     outputs:
-      needs-build-_sample-bilt-monorepo__math-utils: ${{steps.generateBuildInformation.outputs.needs-build-_sample-bilt-monorepo__math-utils}}
-      needs-build-_sample-bilt-monorepo__promise-utils: ${{steps.generateBuildInformation.outputs.needs-build-_sample-bilt-monorepo__promise-utils}}
-      needs-build-_sample-bilt-monorepo__snake: ${{steps.generateBuildInformation.outputs.needs-build-_sample-bilt-monorepo__snake}}
-      needs-build-_sample-bilt-monorepo__console-snake: ${{steps.generateBuildInformation.outputs.needs-build-_sample-bilt-monorepo__console-snake}}
+      needs-build-_sample-bilt-monorepo__math-utils: "${{steps.generateBuildInformation.outputs.needs-build-_sample-bilt-monorepo__math-utils}}"
+      needs-build-_sample-bilt-monorepo__promise-utils: "${{steps.generateBuildInformation.outputs.needs-build-_sample-bilt-monorepo__promise-utils}}"
+      needs-build-_sample-bilt-monorepo__snake: "${{steps.generateBuildInformation.outputs.needs-build-_sample-bilt-monorepo__snake}}"
+      needs-build-_sample-bilt-monorepo__console-snake: "${{steps.generateBuildInformation.outputs.needs-build-_sample-bilt-monorepo__console-snake}}"
       x: yabadabadoo
   build-_sample-bilt-monorepo__math-utils:
     name: "@sample-bilt-monorepo/math-utils"
