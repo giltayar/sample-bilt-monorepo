@@ -26,7 +26,6 @@ jobs:
         echo ::set-output name=needs-build-_sample-bilt-monorepo__math-utils::true
         echo ::set-output name=needs-build-_sample-bilt-monorepo__promise-utils::true
         echo ::set-output name=needs-build-_sample-bilt-monorepo__snake::true
-        echo ::set-output name=needs-build-_sample-bilt-monorepo__console-snake::false
     outputs:
       needs-build-_sample-bilt-monorepo__math-utils: "${{steps.generateBuildInformation.outputs.needs-build-_sample-bilt-monorepo__math-utils}}"
       needs-build-_sample-bilt-monorepo__promise-utils: "${{steps.generateBuildInformation.outputs.needs-build-_sample-bilt-monorepo__promise-utils}}"
