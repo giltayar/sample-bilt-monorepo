@@ -58,7 +58,7 @@ jobs:
         run: bilt @sample-bilt-monorepo/math-utils -m 'CI Build'
     if: >-
       ${{needs.generateBuildInformation.outputs.needs-build-_sample-bilt-monorepo__math-utils
-      == 'true}}
+      == 'true'}}
   build-_sample-bilt-monorepo__snake:
     name: '@sample-bilt-monorepo/snake'
     runs-on: ubuntu-latest
@@ -87,7 +87,7 @@ jobs:
         run: bilt @sample-bilt-monorepo/snake -m 'CI Build'
     if: >-
       ${{needs.generateBuildInformation.outputs.needs-build-_sample-bilt-monorepo__snake
-      == 'true}}
+      == 'true'}}
   build-_sample-bilt-monorepo__promise-utils:
     name: '@sample-bilt-monorepo/promise-utils'
     runs-on: ubuntu-latest
@@ -116,7 +116,7 @@ jobs:
         run: bilt @sample-bilt-monorepo/promise-utils -m 'CI Build'
     if: >-
       ${{needs.generateBuildInformation.outputs.needs-build-_sample-bilt-monorepo__promise-utils
-      == 'true}}
+      == 'true'}}
   build-_sample-bilt-monorepo__console-snake:
     name: '@sample-bilt-monorepo/console-snake'
     runs-on: ubuntu-latest
@@ -146,5 +146,5 @@ jobs:
         run: bilt @sample-bilt-monorepo/console-snake -m 'CI Build'
     if: >-
       ${{needs.generateBuildInformation.outputs.needs-build-_sample-bilt-monorepo__console-snake
-      == 'true}}
+      == 'true'}}
 
