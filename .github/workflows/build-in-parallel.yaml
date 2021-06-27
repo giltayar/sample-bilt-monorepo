@@ -15,11 +15,11 @@ jobs:
           node-version: 16
           registry-url: 'https://registry.npmjs.org'
       - name: Install Bilt
-        run: npm install -g @bilt/cli @bilt/generate-github-actions-workflow
+        run: npm install -g @bilt/cli @bilt/github-actions-workflow
       - name: Generate build information
         id: generateBuildInformation
         run: >-
-          bilt  --dry-run --json | generate-github-actions-workflow
+          bilt  --dry-run --json | github-actions-workflow
           echo-build-needs
     outputs:
       needs-build-_sample-bilt-monorepo__math-utils: >-
