@@ -18,9 +18,7 @@ jobs:
         run: npm install -g @bilt/cli @bilt/github-actions-workflow
       - name: Generate build information
         id: generateBuildInformation
-        run: >-
-          bilt  --dry-run --json | github-actions-workflow
-          echo-build-needs
+        run: bilt  --dry-run --json | github-actions-workflow echo-build-needs
     outputs:
       needs-build-_sample-bilt-monorepo__math-utils: >-
         ${{steps.generateBuildInformation.outputs.needs-build-_sample-bilt-monorepo__math-utils}}
@@ -54,6 +52,11 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       - name: Install Bilt
         run: npm install -g @bilt/cli
+      - name: Run Verdaccio
+        run: |
+          cd dev
+          npm install
+          npm run develop-locally
       - name: Build
         run: bilt @sample-bilt-monorepo/math-utils -m 'CI Build'
     if: >-
@@ -83,6 +86,11 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       - name: Install Bilt
         run: npm install -g @bilt/cli
+      - name: Run Verdaccio
+        run: |
+          cd dev
+          npm install
+          npm run develop-locally
       - name: Build
         run: bilt @sample-bilt-monorepo/snake -m 'CI Build'
     if: >-
@@ -112,6 +120,11 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       - name: Install Bilt
         run: npm install -g @bilt/cli
+      - name: Run Verdaccio
+        run: |
+          cd dev
+          npm install
+          npm run develop-locally
       - name: Build
         run: bilt @sample-bilt-monorepo/promise-utils -m 'CI Build'
     if: >-
@@ -142,6 +155,11 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       - name: Install Bilt
         run: npm install -g @bilt/cli
+      - name: Run Verdaccio
+        run: |
+          cd dev
+          npm install
+          npm run develop-locally
       - name: Build
         run: bilt @sample-bilt-monorepo/console-snake -m 'CI Build'
     if: >-
