@@ -1297,7 +1297,7 @@
 			"version": "1.0.15"
 		}
 	},
-	"_rev": "63-cdf2a6027f4e358f",
+	"_rev": "64-fa726b99c44db029",
 	"_id": "@sample-bilt-monorepo/snake",
-	"readme": "# snake\n\nA library that ???.\n\nThis library is JSM-only (does not support `require`-ing it).\n\n## Installation\n\n```sh\nnpm install @sample-bilt-monorepo/snake\n```\n\n## Basic use\n\n???\n\nExample:\n\n```js\nimport {} from '@sample-bilt-monorepo/snake'\n???\n```\n\n## API\n\n### `???(???)`\n\n???\n\nExample:\n\n```js\nimport {} from '@sample-bilt-monorepo/snake'\n???\n```\n\n## Contributing\n\nSee the documentation on contributing code to packages in this monorepo\n[here](../../CONTRIBUTING.md).\n\n### License\n\nMIT\n"
+	"readme": "# snake\n\nA library that ???.\n\nThis library is JSM-only (does not support `require`-ing it).\n\n## Installation\n\n```sh\nnpm install @sample-bilt-monorepo/snake\n```\n\n## Basic use\n\n???\n\nExample:\n\n```js\nimport {} from '@sample-bilt-monorepo/snake'\n???\n```\n\n## API\n\n### `???(???)`\n\n???\n\nExample:\n\n```js\nimport {} from '@sample-bilt-monorepo/snake'\n???\n```\n\n## Contributing\n\nSee the documentation on contributing code to packages in this monorepo\n[here](../../CONTRIBUTING.md).\n\n### License\n\nMIT"
 }

@@ -257,7 +257,7 @@
 			"version": "1.0.2"
 		}
 	},
-	"_rev": "11-ffa1328343bf2346",
+	"_rev": "12-9cccf978c97ce762",
 	"_id": "@sample-bilt-monorepo/promise-utils",
-	"readme": "# promise-utils\n\nA library that ???.\n\nThis library is JSM-only (does not support `require`-ing it).\n\n## Installation\n\n```sh\nnpm install @sample-bilt-monorepo/promise-utils\n```\n\n## Basic use\n\n???\n\nExample:\n\n```js\nimport {} from '@sample-bilt-monorepo/promise-utils'\n???\n```\n\n## API\n\n### `???(???)`\n\n???\n\nExample:\n\n```js\nimport {} from '@sample-bilt-monorepo/promise-utils'\n???\n```\n\n## Contributing\n\nSee the documentation on contributing code to packages in this monorepo\n[here](../../CONTRIBUTING.md).\n\n### License\n\nMIT\n"
+	"readme": "# promise-utils\n\nA library that ???.\n\nThis library is JSM-only (does not support `require`-ing it).\n\n## Installation\n\n```sh\nnpm install @sample-bilt-monorepo/promise-utils\n```\n\n## Basic use\n\n???\n\nExample:\n\n```js\nimport {} from '@sample-bilt-monorepo/promise-utils'\n???\n```\n\n## API\n\n### `???(???)`\n\n???\n\nExample:\n\n```js\nimport {} from '@sample-bilt-monorepo/promise-utils'\n???\n```\n\n## Contributing\n\nSee the documentation on contributing code to packages in this monorepo\n[here](../../CONTRIBUTING.md).\n\n### License\n\nMIT"
 }
