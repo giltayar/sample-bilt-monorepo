@@ -138,6 +138,9 @@ jobs:
   build-_sample-bilt-monorepo__console-snake:
     name: '@sample-bilt-monorepo/console-snake'
     runs-on: ubuntu-latest
+    needs:
+      - build-_sample-bilt-monorepo__promise-utils
+      - build-_sample-bilt-monorepo__snake
     steps:
       - uses: actions/checkout@v2
         with:
