@@ -145,6 +145,7 @@ jobs:
       - name: Debug if
         run: |
           echo <<EOF
+            0: ${{needs.generateBuildInformation.outputs}}
             1: ${{needs.generateBuildInformation.outputs.needs-build-_sample-bilt-monorepo__console-snake}}
             2: ${{needs.build-_sample-bilt-monorepo__promise-utils.result}}
             3: ${{needs.build-_sample-bilt-monorepo__snake.result}}
