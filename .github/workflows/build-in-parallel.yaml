@@ -139,6 +139,7 @@ jobs:
     name: '@sample-bilt-monorepo/console-snake'
     runs-on: ubuntu-latest
     needs:
+      - generateBuildInformation
       - build-_sample-bilt-monorepo__promise-utils
       - build-_sample-bilt-monorepo__snake
     steps:
@@ -179,5 +180,6 @@ jobs:
       - name: Build
         run: bilt @sample-bilt-monorepo/console-snake -m 'CI Build'
     if: >-
-      ${{always()}}
+      ${{needs.generateBuildInformation.outputs.needs-build-_sample-bilt-monorepo__console-snake
+      == 'true'}}
 #https://github.com/actions/runner/issues/491
