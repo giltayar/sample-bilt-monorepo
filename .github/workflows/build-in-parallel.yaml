@@ -178,5 +178,5 @@ jobs:
       - name: Build
         run: bilt @sample-bilt-monorepo/console-snake -m 'CI Build'
     if: >-
-      always()
+      ${{always()}}
 #https://github.com/actions/runner/issues/491
