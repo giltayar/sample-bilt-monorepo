@@ -180,6 +180,10 @@ jobs:
       - name: Build
         run: bilt @sample-bilt-monorepo/console-snake -m 'CI Build'
     if: >-
-      ${{needs.generateBuildInformation.outputs.needs-build-_sample-bilt-monorepo__console-snake
-      == 'true'}}
+      ${{
+        always() &&
+        needs.generateBuildInformation.outputs.needs-build-_sample-bilt-monorepo__console-snake == 'true' &&
+        needs.build-_sample-bilt-monorepo__promise-utils.result != 'failure' &&
+        needs.build-_sample-bilt-monorepo__snake.result != 'failure'
+      }}
 #https://github.com/actions/runner/issues/491
