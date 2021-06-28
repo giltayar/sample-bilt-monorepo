@@ -142,6 +142,16 @@ jobs:
       - build-_sample-bilt-monorepo__promise-utils
       - build-_sample-bilt-monorepo__snake
     steps:
+      - name: Debug if
+        run: |
+          echo <<EOF
+            1: ${{needs.generateBuildInformation.outputs.needs-build-_sample-bilt-monorepo__console-snake}}
+            2: ${{needs.build-_sample-bilt-monorepo__promise-utils.result}}
+            3: ${{needs.build-_sample-bilt-monorepo__snake.result}}
+            if: ${{needs.generateBuildInformation.outputs.needs-build-_sample-bilt-monorepo__console-snake == 'true' &&
+            needs.build-_sample-bilt-monorepo__promise-utils.result != 'failure' &&
+            needs.build-_sample-bilt-monorepo__snake.result != 'failure'}}
+          EOF
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
@@ -168,8 +178,5 @@ jobs:
       - name: Build
         run: bilt @sample-bilt-monorepo/console-snake -m 'CI Build'
     if: >-
-      always() &&
-      ${{needs.generateBuildInformation.outputs.needs-build-_sample-bilt-monorepo__console-snake == 'true' &&
-      needs.build-_sample-bilt-monorepo__promise-utils.result != 'failure' &&
-      needs.build-_sample-bilt-monorepo__snake.result != 'failure'}}
+      always()
 #https://github.com/actions/runner/issues/491
