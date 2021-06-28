@@ -938,7 +938,7 @@
 			"version": "1.0.11"
 		}
 	},
-	"_rev": "47-854fffd1387ee039",
+	"_rev": "48-7f7e104b69ac3b1d",
 	"_id": "@sample-bilt-monorepo/math-utils",
-	"readme": "# math-utils\n\nA library that ???.\n\nThis library is JSM-only (does not support `require`-ing it).\n\n## Installation\n\n```sh\nnpm install @sample-bilt-monorepo/math-utils\n```\n\n## Basic use\n\n???\n\nExample:\n\n```js\nimport {} from '@sample-bilt-monorepo/math-utils'\n???\n```\n\n## API\n\n### `???(???)`\n\n???\n\nExample:\n\n```js\nimport {} from '@sample-bilt-monorepo/math-utils'\n???\n```\n\n## Contributing\n\nSee the documentation on contributing code to packages in this monorepo\n[here](../../CONTRIBUTING.md).\n\n### License\n\nMIT\n"
+	"readme": "# math-utils\n\nA library that ???.\n\nThis library is JSM-only (does not support `require`-ing it).\n\n## Installation\n\n```sh\nnpm install @sample-bilt-monorepo/math-utils\n```\n\n## Basic use\n\n???\n\nExample:\n\n```js\nimport {} from '@sample-bilt-monorepo/math-utils'\n???\n```\n\n## API\n\n### `???(???)`\n\n???\n\nExample:\n\n```js\nimport {} from '@sample-bilt-monorepo/math-utils'\n???\n```\n\n## Contributing\n\nSee the documentation on contributing code to packages in this monorepo\n[here](../../CONTRIBUTING.md).\n\n### License\n\nMIT"
 }
