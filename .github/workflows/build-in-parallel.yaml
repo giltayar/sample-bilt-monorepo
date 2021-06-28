@@ -34,6 +34,11 @@ jobs:
     needs:
       - generateBuildInformation
     steps:
+      - name: Debug outputs
+        run: |
+          echo <<EOF
+            ${{toJSON(needs.generateBuildInformation.outputs)}}
+          EOF
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
