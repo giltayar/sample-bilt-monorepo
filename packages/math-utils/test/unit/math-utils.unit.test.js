@@ -4,7 +4,7 @@ import {expect} from 'chai'
 
 import {randomBetween, range} from '../../src/math-utils.js'
 
-describe('math-utils (unit)', function () {
+describe('math-utils (unit) ', function () {
   describe('range', () => {
     it('should return an empty array if from === to', () => {
       expect(range(4, 4)).to.eql([])
