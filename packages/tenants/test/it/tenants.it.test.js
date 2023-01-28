@@ -62,6 +62,18 @@ describe('tenants (it)', function () {
   })
 
   it('should delete a user', async () => {
-    // Live coding time!
+    const tenant1 = {id: uuid(), firstName: 'Gil', lastName: 'Tayar'}
+    const tenant2 = {id: uuid(), firstName: 'Shai', lastName: 'Reznik'}
+
+    await Promise.all([
+      fetchAsJsonWithJsonBody(`${baseUrl()}/api/tenants/${tenant1.id}`, tenant1),
+      fetchAsJsonWithJsonBody(`${baseUrl()}/api/tenants/${tenant2.id}`, tenant2),
+    ])
+
+    await fetchAsJson(`${baseUrl()}/api/tenants/${tenant1.id}`, {
+      method: 'DELETE',
+    })
+
+    expect(await fetchAsJson(`${baseUrl()}/api/tenants`)).to.eql([tenant2])
   })
 })
