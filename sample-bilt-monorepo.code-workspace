@@ -27,10 +27,6 @@
 		{
 			"name": ".bilt",
 			"path": ".bilt"
-		},
-		{
-			"name": ".github",
-			"path": ".github"
 		}
 	],
 	"settings": {}
