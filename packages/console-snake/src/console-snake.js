@@ -12,6 +12,7 @@ export async function app(argv, {shouldExitOnError = true} = {}) {
 
   switch (args._[0]) {
     case undefined:
+      // @ts-expect-error
       await (await import(`./commands/play-command.js`)).default(args)
       break
     default:
