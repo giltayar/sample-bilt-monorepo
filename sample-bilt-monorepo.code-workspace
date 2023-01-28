@@ -1,10 +1,6 @@
 {
 	"folders": [
 		{
-			"name": "dev",
-			"path": "dev"
-		},
-		{
 			"name": "docs",
 			"path": "docs"
 		},
@@ -25,8 +21,8 @@
 			"path": "packages/snake"
 		},
 		{
-			"name": ".bilt",
-			"path": ".bilt"
+			"name": "tenants",
+			"path": "packages/tenants"
 		}
 	],
 	"settings": {}
