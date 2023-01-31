@@ -1,6 +1,7 @@
 import fastify from 'fastify'
 import retry from 'p-retry'
 import pg from 'pg'
+import {randomBetween} from '@sample-bilt-monorepo/math-utils'
 import {sqlRowsToObjects} from './field-mappings.js'
 
 export default async function createApp({databaseConnectionString}) {
@@ -12,6 +13,8 @@ export default async function createApp({databaseConnectionString}) {
   app.get('/', async () => {
     return 'OK'
   })
+
+  app.get('/api/committee-fees', async () => ({fees: Math.ceil(randomBetween(0, 100))}))
 
   app.get('/api/tenants', async () => {
     const {rows} = await databaseClient.query('SELECT id, first_name, last_name FROM tenants')

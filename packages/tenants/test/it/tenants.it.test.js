@@ -76,4 +76,10 @@ describe('tenants (it)', function () {
 
     expect(await fetchAsJson(`${baseUrl()}/api/tenants`)).to.eql([tenant2])
   })
+
+  it('should return the committee fees', async () => {
+    const result = /**@type {any}*/ (await fetchAsJson(`${baseUrl()}/api/committee-fees`))
+
+    expect(result.fees).to.be.within(0, 100)
+  })
 })
